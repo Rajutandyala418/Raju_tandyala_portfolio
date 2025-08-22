@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raju Tandyala | Portfolio</title>
+  <meta name="description" content="Portfolio of Raju Tandyala – Web Developer (PHP, MySQL, JS, Python). Projects, internships, certifications, and contact." />
+  <meta name="author" content="Raju Tandyala" />
+  <meta property="og:title" content="Raju Tandyala | Portfolio" />
+  <meta property="og:description" content="Web Developer • Projects • Internships • Contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/og-cover.jpg" />
+  <link rel="icon" href="images/favicon.png" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS (Scroll animations) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0e13; --bg-2:#0f1420; --card:#121826; --text:#f2f5f9; --muted:#a8b3c7; --brand:#00d1ff; --brand-2:#7cff6b; --accent:#ffd057;
+      --ring:rgba(0,209,255,.35);
+    }
+    [data-theme="light"]{
+      --bg:#f6f8fb; --bg-2:#ffffff; --card:#ffffff; --text:#0c1220; --muted:#4b5565; --brand:#0077ff; --brand-2:#00a36c; --accent:#ff8a00; --ring:rgba(0,119,255,.25);
+    }
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,Segoe UI,Arial,Helvetica,sans-serif; background: radial-gradient(1200px 600px at 10% -10%, rgba(0,209,255,.08), transparent 60%), radial-gradient(1000px 500px at 90% 10%, rgba(124,255,107,.07), transparent 60%), var(--bg); color:var(--text); overflow-x:hidden}
+
+    /* ======= Global ======= */
+    .container-narrow{max-width:1060px}
+    .section{padding:96px 0}
+    .gradient-text{background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .btn-brand{background:linear-gradient(90deg,var(--brand),var(--brand-2)); border:none; color:black; font-weight:700}
+    .btn-brand:hover{filter:brightness(1.05); transform: translateY(-1px)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.15); color:var(--text); background:transparent}
+    .btn-ghost:hover{border-color:var(--brand); box-shadow:0 0 0 6px var(--ring)}
+
+    /* ======= Navbar ======= */
+    .navbar{backdrop-filter:saturate(1.4) blur(8px); background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.15)); border-bottom:1px solid rgba(255,255,255,.07)}
+    [data-theme="light"] .navbar{background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.65)); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav-link{color:var(--text)!important; opacity:.85}
+    .nav-link.active,.nav-link:hover{opacity:1}
+
+    /* ======= Hero ======= */
+    .hero{min-height:90vh; display:grid; place-items:center; position:relative}
+    .hero .avatar{width:300px; height:300px; border-radius:50%; border:4px solid rgba(255,255,255,.15); box-shadow:0 10px 40px rgba(0,0,0,.4)}
+    .floating{animation:floating 7s ease-in-out infinite}
+    @keyframes floating{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .kbd{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); padding:.25rem .5rem; border-radius:.4rem; font-size:.85rem}
+
+    /* ======= Cards ======= */
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .card-elevate{transition:transform .25s ease, box-shadow .25s ease}
+    .card-elevate:hover{transform:translateY(-6px); box-shadow:0 18px 50px rgba(0,0,0,.35)}
+
+    /* ======= Skills ======= */
+    .skill-badge{display:inline-flex; align-items:center; gap:.5rem; padding:.5rem .75rem; border:1px solid rgba(255,255,255,.15); border-radius:999px; margin:.25rem; background:rgba(255,255,255,.04)}
+    .skill-badge i{opacity:.9}
+
+    /* ======= Timeline ======= */
+    .timeline{position:relative; padding-left:28px}
+    .timeline:before{content:""; position:absolute; left:0px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand), transparent 60%)}
+    .tl-item{position:relative; margin:0 0 28px}
+    .tl-item:before{content:""; position:absolute; left:-22px; top:6px; width:12px; height:12px; background:var(--brand); border-radius:50%; box-shadow:0 0 0 6px var(--ring)}
+
+    /* ======= Project ======= */
+   .project-img {
+  height: 200px;       /* smaller height */
+  width: 100%;         /* take full card width */
+  object-fit: contain; /* show full image without cutting */
+  border-radius: 12px;
+  background: #fff;    /* optional: gives contrast if image has transparency */
+  padding: 5px;        /* small padding inside */
+}
+
+    /* ======= Contact ======= */
+    .form-control, .form-select{background:var(--bg-2); border:1px solid rgba(255,255,255,.12); color:var(--text)}
+    .form-control:focus{border-color:var(--brand); box-shadow:0 0 0 .25rem var(--ring)}
+
+    /* Back to top */
+    #toTop{position:fixed; right:16px; bottom:16px; display:none; z-index:1040}
+
+    /* Preloader */
+    #preloader{position:fixed; inset:0; background:var(--bg); display:grid; place-items:center; z-index:2000}
+    .loader{width:64px;height:64px;border-radius:50%; border:4px solid rgba(255,255,255,.12); border-top-color:var(--brand); animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08)}
+
+    /* Small tweaks */
+    .brand-dot{width:10px;height:10px;border-radius:50%;background:var(--brand);display:inline-block;margin-right:8px;box-shadow:0 0 0 6px var(--ring)}
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader"><div class="loader"></div></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container container-narrow">
+      <a class="navbar-brand fw-bold" href="#hero" style = "color : yellow";><span class="brand-dot"></span>Raju Tandyala</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certs">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex ms-lg-3 gap-2 mt-3 mt-lg-0">
+          <a class="btn btn-ghost btn-sm" href="https://github.com/Rajutandyala418" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github me-1"></i>GitHub</a>
+          <a class="btn btn-brand btn-sm" href="https://github.com/Rajutandyala418/rajutandyala/raw/main/Raju%20Tandyala.pdf"><i class="fa-solid fa-download me-1"></i>Resume</a>
+          <button id="themeToggle" class="btn btn-ghost btn-sm" aria-label="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="hero" class="hero section">
+    <div class="container container-narrow">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="badge text-bg-dark border border-light-subtle mb-3">Open to Internships & SDE Roles</span>
+          <h1 class="display-5 fw-extrabold mb-3">Hi, I'm <span class="gradient-text">Raju Tandyala</span></h1>
+          <p class="lead mb-3">Web Developer crafting fast, accessible, and delightful experiences.</p>
+          <p class="mb-4 text-secondary">I build full‑stack apps with PHP/MySQL/JS and explore AI/ML with Python. Check out my featured projects below.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="#projects" class="btn btn-brand btn-lg"><i class="fa-solid fa-rocket me-2"></i>View Projects</a>
+            <a href="#contact" class="btn btn-ghost btn-lg"><i class="fa-regular fa-paper-plane me-2"></i>Contact Me</a>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center" data-aos="fade-left">
+          <img class="avatar floating" src="images/raju.png" alt="Raju portrait" />
+          <div class="mt-3 text-secondary">Guntur, Andhra Pradesh · <a class="link-light text-decoration-underline" href="https://www.linkedin.com/in/tandyala-raju-765a84290/" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+<section id="about" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7" data-aos="fade-up">
+          <div class="p-4 glass h-100 card-elevate">
+            <h2 class="h3 mb-3">About Me</h2>
+            <p class="mb-3">I'm a CSE (AI & ML) undergrad passionate about building useful products. I enjoy turning ideas into full‑stack web apps and tinkering with computer vision/NLP. I value clean code, performance, and great UX.</p>
+            <ul class="list-unstyled text-secondary mb-0">
+              <li class="mb-2"><i class="fa-solid fa-envelope me-2 text-info"></i><a class="link-light" href="mailto:rajutandyala369@gmail.com">rajutandyala369@gmail.com</a></li>
+              <li class="mb-2"><i class="fa-solid fa-phone me-2 text-success"></i><a class="link-light" href="tel:+917569398385">+91 75693 98385</a></li>
+              <li><i class="fa-brands fa-github me-2"></i><a class="link-light" href="https://github.com/Rajutandyala418" target="_blank" rel="noopener">github.com/Rajutandyala418</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-4 glass h-100 card-elevate">
+            <h3 class="h5 mb-3">Quick Facts</h3>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="skill-badge"><i class="fa-solid fa-code"></i> PHP • MySQL • JS</span>
+              <span class="skill-badge"><i class="fa-brands fa-python"></i> Python • OpenCV • NLTK</span>
+              <span class="skill-badge"><i class="fa-solid fa-layer-group"></i> Bootstrap • REST</span>
+              <span class="skill-badge"><i class="fa-solid fa-cloud"></i> AWS Academy</span>
+            </div>
+            <hr class="border-secondary-subtle" />
+            <div class="d-flex align-items-center gap-3">
+              <img src="images/nitw.jpg" alt="NITW" width="56" height="56" class="rounded-3 object-fit-cover" />
+              <div>
+                <div class="small text-secondary">Recent Internship</div>
+                <div class="fw-semibold">NIT Warangal – ML & DIP
+ <a href="https://drive.google.com/file/d/1Lq6QX8uE0K8Tn_mDGP2wEshVwYIek3k4/view?usp=drive_link" 
+               class="btn btn-outline-light btn-sm" target="_blank">View Certificate</a>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <h2 class="h3 mb-4" data-aos="fade-right">Skills</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in">
+          <div class="p-4 glass card-elevate h-100">
+            <h3 class="h6 text-uppercase text-secondary">Programming</h3>
+            <div class="mt-2">
+              <span class="skill-badge">C# (Intermediate)</span>
+              <span class="skill-badge">Python (Intermediate)</span>
+              <span class="skill-badge">Java (Beginner)</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="50">
+          <div class="p-4 glass card-elevate h-100">
+            <h3 class="h6 text-uppercase text-secondary">Web</h3>
+            <div class="mt-2">
+              <span class="skill-badge">PHP • MySQL</span>
+              <span class="skill-badge">HTML • CSS • Bootstrap</span>
+              <span class="skill-badge">JavaScript</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-4 glass card-elevate h-100">
+            <h3 class="h6 text-uppercase text-secondary">Tools & Libraries</h3>
+            <div class="mt-2">
+              <span class="skill-badge">Git & GitHub</span>
+              <span class="skill-badge">OpenCV • NLTK</span>
+              <span class="skill-badge">AOS • Font Awesome</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <div class="d-flex justify-content-between align-items-end mb-3">
+        <h2 class="h3" data-aos="fade-right">Featured Projects</h2>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/Rajutandyala418" target="_blank" rel="noopener"><i class="fa-brands fa-github me-1"></i>More on GitHub</a>
+      </div>
+      <div class="row g-4">
+        <!-- Project 1 -->
+      <div class="col-md-4" data-aos="fade-up">
+          <div class="p-3 glass card-elevate h-100">
+            <img class="project-img w-100" src="images/busimage.png" alt="Online Bus Booking" />
+            <div class="p-2"></div>
+            <h3 class="h5 mb-1">Online Bus Booking System</h3>
+            <p class="text-secondary mb-3">Full‑stack app with admin dashboard, Razorpay payments, ticket PDF, and role‑based access.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="skill-badge">PHP</span><span class="skill-badge">MySQL</span><span class="skill-badge">Bootstrap</span><span class="skill-badge">JavaScript</span>
+            </div>
+            <a class="btn btn-brand btn-sm" href="https://github.com/Rajutandyala418/Online-bus-booking-with-full-stack-development" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Repository</a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="p-3 glass card-elevate h-100">
+            <img class="project-img w-100" src="images/underwater.jpg" alt="Underwater Enhancement" />
+            <div class="p-2"></div>
+            <h3 class="h5 mb-1">Underwater Image Enhancement</h3>
+            <p class="text-secondary mb-3">Image restoration and color correction using classic CV and deep learning pipelines.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="skill-badge">Python</span><span class="skill-badge">OpenCV</span><span class="skill-badge">DL</span>
+            </div>
+            <a class="btn btn-brand btn-sm" href="https://github.com/Rajutandyala418/Underwater-image-re-enhancement" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Repository</a>
+          </div>
+        </div>
+        <!-- Project 3 -->
+       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-3 glass card-elevate h-100">
+            <img class="project-img w-100" src="images/grammar_check.jpg" alt="Grammar Correction Tool" />
+            <div class="p-2"></div>
+            <h3 class="h5 mb-1">Grammar Correction Tool</h3>
+            <p class="text-secondary mb-3">Flask API + PHP frontend providing grammar fixes, POS tagging, and suggestions.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="skill-badge">Flask</span><span class="skill-badge">Transformers</span><span class="skill-badge">PHP</span>
+            </div>
+            <a class="btn btn-brand btn-sm" href="https://github.com/Rajutandyala418/Grammar-correction-tool-using-nlp" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Repository</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <h2 class="h3 mb-4" data-aos="fade-right">Education</h2>
+      <div class="glass p-4 card-elevate" data-aos="fade-up">
+        <div class="row g-4">
+          <div class="col-md-8">
+            <div class="timeline">
+              <div class="tl-item">
+                <h3 class="h5 mb-1">B.Tech – CSE (AI & ML)</h3>
+                <div class="text-secondary small">RVRJC College of Engineering · 2022–2026 · Guntur</div>
+                <div class="mt-2">CGPA: <strong>9.17</strong></div>
+              </div>
+              <div class="tl-item">
+                <h3 class="h6 mb-1">Intermediate (MPC)</h3>
+                <div class="text-secondary small">Sri Chaitanya Junior College · 2020–2022 · Srikakulam</div>
+                <div class="mt-2">Percentage: <strong>97.4%</strong></div>
+              </div>
+              <div class="tl-item">
+                <h3 class="h6 mb-1">SSC</h3>
+                <div class="text-secondary small">AP Model School, Edualavalasa · 2019–2020</div>
+                <div class="mt-2">Percentage: <strong>92%</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certs" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <h2 class="h3 mb-4" data-aos="fade-right">Certifications</h2>
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3" data-aos="zoom-in">
+          <div class="p-3 glass card-elevate h-100 text-center">
+            <img src="images/nitwlogo.jpg" class="rounded-3 mb-2" alt="NITW Internship" width="100" height="100" />
+            <div class="fw-semibold">NIT Warangal Internship</div>
+            <a class="small link-light" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1Lq6QX8uE0K8Tn_mDGP2wEshVwYIek3k4/view?usp=drive_link">View Certificate</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="50">
+          <div class="p-3 glass card-elevate h-100 text-center">
+            <img src="images/greatlearning.jpg" class="rounded-3 mb-2" alt="NLP" width="100" height="100" />
+            <div class="fw-semibold">Intro to NLP – GL</div>
+            <a class="small link-light" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1H77VanfGMgi8zvZMKgex4xKNgic83Pqj/view?usp=drive_link">View Certificate</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="p-3 glass card-elevate h-100 text-center">
+            <img src="images/aws.png" class="rounded-3 mb-2" alt="AWS" width="100" height="100" />
+            <div class="fw-semibold">AWS Academy Cloud Foundations</div>
+            <a class="small link-light" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1hbopfW4ySC01PVd2gRqT8-pKK6FX0F3H/view?usp=drive_link">View Certificate</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3" data-aos="zoom-in" data-aos-delay="150">
+          <div class="p-3 glass card-elevate h-100 text-center">
+            <img src="images/ibm.png" class="rounded-3 mb-2" alt="IBM Cloud" width="100" height="100" />
+            <div class="fw-semibold">Cloud Computing – IBM</div>
+            <a class="small link-light" target="_blank" rel="noopener" href="https://drive.google.com/file/d/1wECVLi_XM2JY4jdw-IrhR8BEq6rZFVz9/view?usp=drive_link">View Certificate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section" data-aos="fade-up" data-aos-mirror="true" data-aos-once="false">
+    <div class="container container-narrow">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="p-4 glass h-100 card-elevate">
+            <h2 class="h4 mb-3">Let's Connect</h2>
+            <p class="text-secondary">Have a role or project in mind? Send a message and I’ll get back quickly.</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fa-solid fa-location-dot me-2 text-warning"></i>Guntur, Andhra Pradesh</li>
+              <li class="mb-2"><i class="fa-solid fa-envelope me-2 text-info"></i><a class="link-light" href="mailto:rajutandyala369@gmail.com">rajutandyala369@gmail.com</a></li>
+              <li class="mb-2"><i class="fa-brands fa-linkedin me-2 text-primary"></i><a class="link-light" href="https://www.linkedin.com/in/tandyala-raju-765a84290/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><i class="fa-brands fa-github me-2"></i><a class="link-light" href="https://github.com/Rajutandyala418" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <form id="contactForm" class="p-4 glass card-elevate">
+            <h3 class="h5 mb-3">Send a Message</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name" placeholder="Your name" required />
+                <div class="invalid-feedback">Please enter at least 2 characters.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" name="email" type="email" placeholder="you@example.com" required />
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+                <div class="invalid-feedback">Message must be at least 10 characters.</div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="privacy" required />
+                <label class="form-check-label" for="privacy">I agree to share my contact for reply</label>
+              </div>
+              <button class="btn btn-brand" type="submit"><i class="fa-regular fa-paper-plane me-2"></i>Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <button id="toTop" class="btn btn-brand rounded-circle" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <footer class="py-4 text-center text-secondary">
+    <div class="container container-narrow small">
+      © <span id="year"></span> Raju Tandyala 
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // ======== Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('preloader')?.remove(), 400);
+    });
+
+    // ======== AOS Init
+    AOS.init({ duration: 700, once: true, offset: 80 });
+
+    // ======== Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ======== Theme toggle (persist in localStorage)
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    const toggleTheme = () => {
+      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', current);
+      localStorage.setItem('theme', current);
+    };
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    // Keyboard shortcut G
+    window.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase() === 'g') toggleTheme(); });
+
+    // ======== Smooth active link highlight
+    const sections = document.querySelectorAll('section, header.hero');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(l=>l.classList.remove('active'));
+          const id = entry.target.getAttribute('id');
+          const active = document.querySelector(`.nav-link[href="#${id}"]`);
+          if(active) active.classList.add('active');
+        }
+      });
+    }, { threshold:.35 });
+    sections.forEach(s=> observer.observe(s));
+
+    // ======== Back to top
+    const btnTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      btnTop.style.display = window.scrollY > 600 ? 'inline-flex' : 'none';
+    });
+    btnTop.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
+
+    // ======== Semester links
+    const semesterLinks = {
+      1: "https://drive.google.com/file/d/1B9I53qMJfdGgI38j6773NcWOv3jklBAi/view?usp=drive_link",
+      2: "https://drive.google.com/file/d/1SXi4rd6_5VgLy3xuxn8tmdbewrODJsx5/view?usp=drive_link",
+      3: "https://drive.google.com/file/d/1OQIX0vMwaJbQjXQjzzeWGZkFDL6qWv3K/view?usp=drive_link",
+      4: "https://drive.google.com/file/d/1bunC75mXn8SHVXNZb2hlkdQMwINvB_gA/view?usp=drive_link",
+      5: "https://drive.google.com/file/d/1MGVVxt5BQUKnQ5321NR7IVF2q4_b4WsJ/view?usp=drive_link",
+      6: "https://drive.google.com/file/d/1lPTESl8dhSriHBcjYsd0H4l4cXBeFJTy/view?usp=drive_link",
+    };
+    document.getElementById('viewSemesterLink').addEventListener('click', function(e){
+      const selectedSem = document.getElementById('semesterSelect').value;
+      const url = semesterLinks[selectedSem];
+      if(!url){ e.preventDefault(); return; }
+      this.href = url;
+    });
+
+    // ======== Contact validation + confirmation modal (vanilla)
+    const form = document.getElementById('contactForm');
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const messageEl = document.getElementById('message');
+    const privacyEl = document.getElementById('privacy');
+
+    const isEmail = (v)=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const setInvalid = (el, cond)=>{ el.classList.toggle('is-invalid', cond); };
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const nameOk = (nameEl.value || '').trim().length >= 2;
+      const emailOk = isEmail(emailEl.value || '');
+      const msgOk = (messageEl.value || '').trim().length >= 10;
+      const privacyOk = privacyEl.checked;
+
+      setInvalid(nameEl, !nameOk);
+      setInvalid(emailEl, !emailOk);
+      setInvalid(messageEl, !msgOk);
+      if(!privacyOk){ privacyEl.focus(); }
+
+      if(!(nameOk && emailOk && msgOk && privacyOk)) return;
+
+      // Simple confirmation dialog
+      const summary = `\nName: ${nameEl.value}\nEmail: ${emailEl.value}\nMessage: ${messageEl.value.substring(0,180)}${messageEl.value.length>180?'…':''}`;
+      if(confirm('Send this message?'+summary)){
+        // For production, connect a real endpoint (e.g., Formspree, backend API). For now show success.
+        form.reset();
+        alert('Message sent successfully. Thank you!');
+      }
+    });
+  </script>
+</body>
+</html>
